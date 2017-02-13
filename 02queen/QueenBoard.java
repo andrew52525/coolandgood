@@ -9,9 +9,9 @@ public class QueenBoard{
 		System.out.println(method(0));
 	}
 
-    public boolean countSolutions(){
+    public void countSolutions(){
 		solutionCount=0;
-		return countSolutionsMethod(0);
+		countSolutionsMethod(0);
     }
 	public boolean countSolutionsMethod(int x){
 		boolean retbool = false;
