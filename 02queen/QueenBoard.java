@@ -1,12 +1,11 @@
 public class QueenBoard{
     private int[][] board;
-    private static int solutionCount;
+    private static int solutionCount = -1;
     public QueenBoard(int size){
 	board = new int[size][size];
     }
 
     public void solve(){
-		solutionCount = 0; 
 		System.out.println(method(0));
 	}
 
@@ -38,7 +37,7 @@ public class QueenBoard{
 		return false;
 	}
 
-    public String getCount(){return ""+solutionCount;}
+    public String getSolutionCount(){return ""+solutionCount;}
 
     public String toString(){
 	String retstr = "";
