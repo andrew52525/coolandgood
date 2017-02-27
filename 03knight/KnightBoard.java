@@ -75,6 +75,6 @@ public class KnightBoard{
     public static void main (String[] args){
 	KnightBoard cool = new KnightBoard(6, 5);
 	cool.solve();
-	System.out.println(cool);
+	//System.out.println(cool);
     }
 }
