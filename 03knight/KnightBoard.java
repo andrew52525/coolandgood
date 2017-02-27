@@ -38,7 +38,7 @@ public class KnightBoard{
 	    return true;
 	}
 
-        int[][] spots = {{y+1,x+2},{y+2,x+1},{y-1,x+2},{y-2,x+1},{y-1,x-2},{y-2,x-1},{y+1,x-2},{y+2,x-1}};
+        /*int[][] spots = {{y+1,x+2},{y+2,x+1},{y-1,x+2},{y-2,x+1},{y-1,x-2},{y-2,x-1},{y+1,x-2},{y+2,x-1}};
 	for (int i = 0; i < 8; i++){
 	    //for each spot if spot is 0 and spot is on board, cool at that spot
 	    //if cool at that spot returns true, return true (stop everything)
@@ -50,14 +50,30 @@ public class KnightBoard{
 		    return true;
 		}
 	    }
+	    }*/
+	int xcheckadd = 1;
+	int ycheckadd = 2;
+	for (int i = 0; i < 8; i++){
+	    int xcheck = xcheckadd + x;
+	    int ycheck = ycheckadd + y;
+	    if ((ycheck<board.length)&&(ycheck>=0)&&
+		(xcheck<board[0].length)&&(xcheck>=0)&&
+		(board[ycheck][xcheck]==0)){
+		if (cool(ycheck, xcheck, level+1)){
+		    return true;
+	        }
+	    }
+	    int b = ycheckadd; ycheckadd = xcheckadd; xcheckadd=b;
+	    if (i%4==3){xcheckadd = 0-xcheckadd;}
+	    if (i%4==1){ycheckadd = 0-ycheckadd;}
+	    // System.out.println("" + xcheckadd + " " + ycheckadd + " " + i);
 	}
-
 	//remove the shit
 	board[y][x] = 0;
 	return false;
     }
     public static void main (String[] args){
-	KnightBoard cool = new KnightBoard(6, 6);
+	KnightBoard cool = new KnightBoard(6, 5);
 	cool.solve();
 	System.out.println(cool);
     }

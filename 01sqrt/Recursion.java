@@ -4,6 +4,7 @@ public class Recursion{
 	}
 	public static double sqrt(double n){
 		if (n < 0){throw new IllegalArgumentException();}
+		if (n==0){return 0;}
 		return sqrtHelp(n, 1);
 	}
 	public static double sqrtHelp (double n, double guess){
@@ -14,11 +15,6 @@ public class Recursion{
 	}
 	public static boolean closeEnough(double n, double m){
 		return ((-.00001 < (n - m)/m) && (.00001 > (n-m)/m));
-	}
-	public static void main (String[] args){
-		System.out.println(sqrt(4));
-		System.out.println(sqrt(1));
-		System.out.println(sqrt(.001));
 	}
 	
 	
