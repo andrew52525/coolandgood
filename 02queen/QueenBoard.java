@@ -63,7 +63,7 @@ public class QueenBoard{
 			}
 	    }
 	else{
-		if (board[y][x]!=0){System.out.println("FUCLKKKKK");}
+		if (board[y][x]!=0){System.out.println("oh no it broke");}
 	    board[y][x] = -1;
 	    for (int i = x+1; i < board.length; i++){
 			board[y][i]++;
@@ -74,7 +74,7 @@ public class QueenBoard{
 		}
 	}
     }
-    public static void main (String[] args){
+    /*public static void main (String[] args){
 	QueenBoard a = new QueenBoard(6);
 	a.solve();
 	System.out.println(solutionCount);
@@ -86,5 +86,5 @@ public class QueenBoard{
 		System.out.println(solutionCount);
 		System.out.println(c[i-1]);
 	}
-    }	
+	}	*/
 }
