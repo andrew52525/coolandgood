@@ -23,7 +23,6 @@ public class Cool{
 
     public static void main (String[] args) throws FileNotFoundException {
 	//testing stuff
-	System.out.println("cool");
 	Cool c = new Cool();
 	c.bronze("good.txt");
     }
@@ -41,18 +40,17 @@ public class Cool{
 	        c++;
 	        if(c >= cols) {r++; c = 0;}
 	    }
-	    else if(r == rows) {
-		r = 0;
-		c = 0;
-	    }
 	    else {
-		instructions[r] = new int[] {
+		instructions[r-rows] = new int[] {
 		    in.nextInt(), in.nextInt(), in.nextInt()
 		};
+		stomp(instructions[r-rows][0], instructions[r-rows][1], instructions[r-rows][2]);
 		r++;
 	    }
 	}
 	parray(farm);
+	System.out.println(compute());
+	
 	return 0;
     }
     public void parray(int[][] a){
@@ -66,6 +64,29 @@ public class Cool{
 	System.out.println(retstr);
     }
     public void stomp(int row, int col, int amount) {
-	//
+	int highest = farm[row][col];
+	for (int i = row; i < row+3; i++){
+	    for (int j = col; j < col+3; j++){
+		if (farm[i][j] > highest){highest = farm[i][j];}
+	    }
+	}
+	if (highest - amount < 0){highest = amount;}
+	System.out.println("XDDDD" + highest);
+       	for (int i = row; i < row+3; i++){
+	    for (int j = col; j < col+3; j++){
+	        if (farm[i][j]>highest-amount){farm[i][j] = highest-amount;}
+	    }
+	}
+    }
+    public int compute(){
+	int howmuchwater = 0;
+	for (int i = 0; i < farm.length; i++){
+	    for (int j = 0; j < farm[0].length; j++){
+		if(sealevel > farm[i][j]){
+		    howmuchwater += (sealevel - farm[i][j])*5184;
+		}
+	    }
+	}
+	return howmuchwater;
     }
  }
