@@ -25,7 +25,7 @@ public class USACO{
 	//testing stuff
 	USACO c = new USACO();
 	//c.bronze("good.txt");
-	System.out.println(c.silver("ngood.txt"));
+	//System.out.println(c.silver("ngood.txt"));
     }
 	
 	public int silver(String filename)throws FileNotFoundException{
