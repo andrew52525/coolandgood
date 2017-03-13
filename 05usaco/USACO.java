@@ -17,15 +17,50 @@ calculate V with inches (one square six by six foot)
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-public class Cool{
+public class USACO{
     private int[][] farm;
     private int sealevel;
 
     public static void main (String[] args) throws FileNotFoundException {
 	//testing stuff
-	Cool c = new Cool();
-	c.bronze("good.txt");
+	USACO c = new USACO();
+	//c.bronze("good.txt");
+	System.out.println(c.silver("ngood.txt"));
     }
+	
+	public int silver(String filename)throws FileNotFoundException{
+		Scanner in = new Scanner(new File(filename));
+		int n = in.nextInt(), m = in.nextInt(), t = in.nextInt();
+		int[][] a = new int[n][m];
+		in.nextLine();
+		for (int i = 0; i < n; i++){
+			String line = in.nextLine();
+			for (int j = 0; j < m; j++){
+				char whatitbe = line.charAt(j);
+				if (whatitbe == '.'){a[i][j] = 0;}
+				if (whatitbe == '*'){a[i][j] = -1;}
+			}
+		}
+		int r1 = in.nextInt()-1, c1 = in.nextInt()-1, r2 = in.nextInt()-1, c2 = in.nextInt()-1;
+		a[r1][c1] = 1;
+		return shelp(r2, c2, n, m, t, a, 1);
+	}
+	public int shelp(int r2, int c2, int n, int m, int t, int[][] a, int tcurr){
+		int[][] b = new int[n][m];
+		for (int i = 0; i < n; i++){
+			for (int j = 0; j < m; j++){
+				if (a[i][j] < 0){b[i][j] = -1;}
+				else{
+				if ((i!=n-1)&&(a[i+1][j]>=0)){b[i+1][j] += a[i][j];}
+				if ((i!=0)&&(a[i-1][j]>=0)){b[i-1][j] += a[i][j];}
+				if ((j!=m-1)&&(a[i][j+1]>=0)){b[i][j+1] += a[i][j];}
+				if ((j!=0)&&(a[i][j-1]>=0)){b[i][j-1] += a[i][j];}}
+			}
+		}
+		if (t == tcurr){return b[r2][c2];}
+		return shelp(r2, c2, n, m, t, b, tcurr+1);
+	}
+	
     public int bronze(String filename)throws FileNotFoundException{
 	Scanner in = new Scanner(new File(filename));
 	int rows = in.nextInt(), cols = in.nextInt();
