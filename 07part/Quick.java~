@@ -1,0 +1,19 @@
+import java.util.Random;
+public class Quick{
+    Random rn = new Random();
+    public static int part (int[] data, int start, int end){
+	int pivot = rn.nextInt(data.size);
+	int[] outp = new int[data.size];
+	int numsbelow = 0, numsabove = 0;
+	for (int j = 0; j < data.size; j++){outp[i] = data[pivot];}
+	for (int i = 0; i < data.size; i++){
+	    if (data[i] < data[pivot]){
+		outp[numsbelow] = data[i]; numsbelow++;}
+	    if (data[i] > data[pivot]){
+		outp[numsabove] = data[data.size-1]; numsabove++;}
+	}
+    }
+    public static int quickselect (int[] data, int k){
+
+    }
+}
