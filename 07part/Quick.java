@@ -7,7 +7,7 @@ public class Quick{
 	int i = start+1, k = start+1, j = end;
 	if (end!=start){v = start + rn.nextInt(end-start+1);}
 	else{return start;}
-	System.out.println("startpart"+ " s" + start + " e" + end + " v" + v);
+	//System.out.println("startpart"+ " s" + start + " e" + end + " v" + v);
 	swap(data, v, start);
 	while (i <= j){
 	    if (data[i] < data[start]){
@@ -23,15 +23,15 @@ public class Quick{
 		j--;
 	    }
 	    for (int p = start; p <= end; p++){
-		System.out.print(data[p]);
+		//System.out.print(data[p]);
 	    }
-		System.out.print(" i" + i + " j"+j + " k"+k);
-	    System.out.println("");
+	    //System.out.print(" i" + i + " j"+j + " k"+k);
+	    //System.out.println("");
 	}
-	System.out.println("endpart");
+	//System.out.println("endpart");
 	swap (data, j, start);
 	for (int p = start; p <= end; p++){
-	    System.out.print(data[p]);
+	    //System.out.print(data[p]);
 	}
 	return j;
     }
@@ -51,7 +51,7 @@ public class Quick{
 	}
 	return data[k];
     }
-    public static void quickSort (int[] data){
+    public static void quicksort (int[] data){
 	qsh(data, 0, data.length-1);
     }
     public static void qsh (int[] data, int start, int end){
@@ -62,7 +62,7 @@ public class Quick{
 		if (data[i] == data[pivot]){length++;}
 		else{break;}
 	    }
-	    System.out.println("pivot"+pivot);
+	    //System.out.println("pivot"+pivot);
 	    qsh(data, start, pivot-1);
 	    qsh(data, pivot+length, end);
 	}
@@ -72,16 +72,16 @@ public class Quick{
     }
     public static void test (){
 	int lengtha = 1000;
-	int range = 100;
+	int range = 2;
 	Random rn = new Random();
 	int[] a = new int[lengtha];
 	for (int i = 0; i < lengtha; i++){
 	    a[i] = rn.nextInt(range);
 	}
-	for (int i = 0; i < lengtha; i++){
+	/*for (int i = 0; i < lengtha; i++){
 	    System.out.print(a[i]+" ");
-	}
-	quickSort(a);
+	    }*/
+	quicksort(a);
 	for (int i = 0; i < lengtha; i++){
 	    System.out.print(a[i]+" ");
 	}
