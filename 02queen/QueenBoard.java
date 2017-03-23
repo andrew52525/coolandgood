@@ -75,7 +75,7 @@ public class QueenBoard{
 	    }
 	}
     }
-    public static void main (String[] args){
+    /*public static void main (String[] args){
       QueenBoard a = new QueenBoard(6);
       a.solve();
       System.out.println(solutionCount);
@@ -87,5 +87,5 @@ public class QueenBoard{
       System.out.println(solutionCount);
       System.out.println(c[i-1]);
       }
-      }	
+      }	*/
 }
