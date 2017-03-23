@@ -1,19 +1,4 @@
-/*
-there are 9 cows
-there are R rows of spots and C of spots
-1st number is R, 2nd numberr is C, 3rd number is D, inches by stomping
-hit the highest number in the 3x3, and then press by D
 
-N instructions
-E is final sea level
-find V
-
-next lines are array
-next lines are instructions
-
-calculate V with inches (one square six by six foot)
-
-*/
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -84,9 +69,7 @@ public class USACO{
 	    }
 	}
 	parray(farm);
-	System.out.println(compute());
-	
-	return 0;
+	return compute();
     }
     public void parray(int[][] a){
 	String retstr = "";
