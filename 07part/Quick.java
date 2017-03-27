@@ -63,7 +63,7 @@ public class Quick{
 		else{break;}
 	    }
 	    //System.out.println("pivot"+pivot);
-	    qsh(data, start, pivot-1);
+	    qsh(data, start, pivot);
 	    qsh(data, pivot+length, end);
 	}
     }
@@ -71,7 +71,7 @@ public class Quick{
 	//test();
     }
     public static void test (){
-	int lengtha = 1000;
+	int lengtha = 100000;
 	int range = 2;
 	Random rn = new Random();
 	int[] a = new int[lengtha];
