@@ -1,0 +1,42 @@
+public class MyLinkedList{
+
+    //node class
+    public class LNode{
+	public Lnode next;
+	public int value;
+    }
+
+    //inst vars
+    public LNode start;
+    public int size;
+
+
+    public boolean add(int n){
+	if (start == null){start = LNode; start.value = n;return true;}
+	LNode current = start;
+	while (current.next!= null){current = current.next;}
+	current.next = new LNode();
+	current.next.value = n; return true;
+    }
+
+
+    public String toString(){
+	if (start == null){return "[]";}
+	String ret = "";
+	ret += "[";
+	LNode current = start;
+	while (current.next != null){
+	    ret += current.size;
+	    current = current.next;
+	}
+	ret+= current.size;
+	ret+= "]";
+	return ret;
+    }
+
+    public static void main (String[] args){
+	MyLinkedList d = new MyLinkedList();
+	System.out.println(d);
+    }
+}
+
