@@ -1,7 +1,7 @@
 import java.util.*;
-public class Eval{
+public class StackCalc{
     
-    public static double eval(String s){
+    public static double StackCalc(String s){
 	String[] str = s.split(" ");
 	Stack st = new Stack();
         for(int i = 0; i < str.length; i++){
@@ -39,8 +39,8 @@ public class Eval{
 	return 0.0;
     }
 
-    public static void main(String[] a){
+    /*public static void main(String[] a){
 	String s = "16 8 % 11 +";
-	System.out.println(eval(s));
-    }
+	System.out.println(StackCalc(s));
+    }*/
 }
