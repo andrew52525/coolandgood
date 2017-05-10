@@ -4,11 +4,11 @@ public class MyHeap{
     
     int min = 1;  //min being -1 means it will flip things to min... -1 is ON
     int s = 0;//s is size
-    ArrayList<Comparable> a;
+    ArrayList<String> a;
     
     public MyHeap(){
-	a = new ArrayList<Comparable>(100);
-	a.add(0);
+	a = new ArrayList<String>(100);
+	a.add("lolololol");
     }
     public MyHeap(boolean b){  //if false is inputted, it will set min on
 	super();
@@ -26,20 +26,20 @@ public class MyHeap{
 	b.add("f");
         for (int i = 0; i < 8; i++){System.out.println(b.remove());}*/
     }
-    public void add (Comparable x){
+    public void add (String x){
 	s++;
         a.add(x);
 	up(s);
     }
-    public Comparable remove(){
-	Comparable r = a.get(1);
+    public String remove(){
+	String r = a.get(1);
 	a.set(1, a.get(s));  //put the last one into first
 	down(1); //push it down
 	a.remove(s);
 	s--;
 	return r;
     }
-    public Comparable peek (){
+    public String peek (){
 	return a.get(1);
     }
 
