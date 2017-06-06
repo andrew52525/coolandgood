@@ -19,6 +19,7 @@ public class Test05 {
         System.out.println("PASS case: "+file+".in +++++++++++++");
       }else{
         System.out.println("Fail case: "+file+".in ------------");
+		System.out.println(u.silver(file+".in"));
       }
     }
 

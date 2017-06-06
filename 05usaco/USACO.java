@@ -8,14 +8,15 @@ public class USACO{
 
     public static void main (String[] args) throws FileNotFoundException {
 	//testing stuff
-	USACO c = new USACO();
+	//USACO c = new USACO();
 	//c.bronze("good.txt");
 	//System.out.println(c.silver("ngood.txt"));
     }
 	
 	public int silver(String filename)throws FileNotFoundException{
 		Scanner in = new Scanner(new File(filename));
-		int n = in.nextInt(), m = in.nextInt(), t = in.nextInt();
+		int n = in.nextInt();
+		int m = in.nextInt(), t = in.nextInt();
 		int[][] a = new int[n][m];
 		in.nextLine();
 		for (int i = 0; i < n; i++){
@@ -64,7 +65,7 @@ public class USACO{
 		instructions[r-rows] = new int[] {
 		    in.nextInt(), in.nextInt(), in.nextInt()
 		};
-		stomp(instructions[r-rows][0], instructions[r-rows][1], instructions[r-rows][2]);
+		stomp(instructions[r-rows][0]-1, instructions[r-rows][1]-1, instructions[r-rows][2]);
 		r++;
 	    }
 	}
@@ -79,7 +80,7 @@ public class USACO{
 	    }
 	    retstr+="\n";
 	}
-	System.out.println(retstr);
+	//System.out.println(retstr);
     }
     public void stomp(int row, int col, int amount) {
 	int highest = farm[row][col];
@@ -89,7 +90,7 @@ public class USACO{
 	    }
 	}
 	if (highest - amount < 0){highest = amount;}
-	System.out.println("XDDDD" + highest);
+	//System.out.println("XDDDD" + highest);
        	for (int i = row; i < row+3; i++){
 	    for (int j = col; j < col+3; j++){
 	        if (farm[i][j]>highest-amount){farm[i][j] = highest-amount;}
