@@ -1,138 +1,69 @@
 import java.util.*;
 public class MyDeque{
-    
-    private String[] Deck;
-    private int front, back, size;
+	private String[] a;
+	private int size, start , end;
 
-    public MyDeque(){
-	Deck = new String[10];
-	front = 0;
-	back = 0;
-	size = 0;
-    }
-
-    private void resize(){
-	String[] res = new String[Deck.length * 2];
-	for(int x = 0; x < back + 1; x++){
-	    res[x] = Deck[x];}
-	for(int y = 0; y < size - back - 1; y++){
-	    res[res.length - 1 - y] = Deck[y + back + 1];
+	public MyDeque(){
+		a = new String[10];		
+		start = 0;
+		end = 9;
 	}
-	Deck = res;
-	front = 0;
-	back = size - 1;
-    }
-
-   public void addFirst(String str){
-	if (str == null){
-	    throw new NullPointerException("Cannot add null elements");
-	}
-	if (size == Deck.length){
-	    resize();
-	}
-	if (size != 0){
-	    if(front == 0){
-		front = Deck.length - 1;
-	    }
-	    else{
-		front -=1;
-	    }
-	}
-	Deck[front] = str;
-	size += 1;
 	
-    }
-
-    public void addLast(String str){
-	if (str == null){
-	    throw new NullPointerException("Cannot add null elements");
-	}
-	if (size == Deck.length){
-	    resize();
-	}
-	if (size!= 0){
-	    back = (back+1) % (Deck.length);
-	}
-        Deck[back] = str;
-	size +=1;
-    }
-
-    public String removeFirst(){
-	String element = "";
-	if(size == 0){
-	    throw new NoSuchElementException("No elements found");
-	}
-	if(front == Deck.length - 1){
-	    element = getFirst();
-	    front = 0;
-	    Deck[Deck.length - 1] = null;
-	    size--;
-	}
-	else{element = getFirst();
-	    Deck[front] = null;
-	    front += 1;
-	    size--;
-	}
-	return element;
-    }
-    
-    public String removeLast(){
-	String element = "";
-	if(size == 0){
-	    throw new NoSuchElementException("No elements found");
-	}
-	if(back == 0){
-	    element = getLast();
-	    back = Deck.length - 1;
-	    Deck[0] = null;
-	    size--;
-	}
-	else{element = getLast();
-	    Deck[back] = null;
-	    back -= 1;
-	    size--;
-	}
-	return element;
-    }
-
-    public String getFirst(){
-	String res = "";
-	if(size == 0){
-	    throw new NoSuchElementException("No elements found");
-	}
-	res = Deck[front];
-	return res;
-    }
-    
-    public String getLast(){
-	String res = "";
-	if(size == 0){
-	    throw new NoSuchElementException("No elements found");
-	}
-	res = Deck[back];
-	return res;
-    }
-
-    public String toString(){
-	String res = "[";
-	for(int x = 0; x < Deck.length; x++){
-	    if(x + 1 == Deck.length){
-		if(Deck[x] == null){		    
-		res +=  "null]";
-		break;
+	private void resize(){
+		String[] newa = new String[a.length * 2];
+		int i = start; int j = start;
+		while(i != end){
+			newa[j] = a[i]; 
+			i++; j++;
+			if(i==a.length){i=0;}
 		}
-		else{
-		    res += Deck[x] + "]";
-		    break;
-		}
-	    }
-	    if(Deck[x] == null){
-		res += "null, ";
-	    }
-	    else{
-	    res += Deck[x] + ", ";
-	    }
+		newa[j] = a[i];
+		a = newa;
+		end = j;
 	}
-	return res;
-    }
+	
+	public void addFirst(String s){
+		if(s==null){throw new NullPointerException("oh no");}
+		if(size == a.length){resize();}
+		if(start==0){start = a.length;}
+		start = (start-1);
+		a[start] = s;
+		size++;
+	}
+	public void addLast(String s){
+		if(s==null){throw new NullPointerException("oh no");}
+		if(size == a.length){resize();}
+		end = (end+1)%(a.length);
+		a[end] = s;
+		size++;
+	}
+	public String removeFirst(){
+		if(size == 0){throw new NoSuchElementException("oh no");}
+		String r = getFirst();
+		start = (start+1)%(a.length);
+		size--;
+		return r;
+	}
+	public String removeLast(){
+		if(size == 0){throw new NoSuchElementException("oh no");}
+		String r = getLast(); 
+		if(end==0){end=a.length;}
+		end = (end-1);
+		size--;
+		return r;
+	}
+	public String getFirst(){
+		if(size == 0){throw new NoSuchElementException("oh no");}
+		return a[start];
+	}
+	public String getLast(){
+		if(size == 0){throw new NoSuchElementException("oh no");}
+		return a[end];
+	}
+	
+	public static void main(String[] args){
+		
+		
+	}
+	
 }
