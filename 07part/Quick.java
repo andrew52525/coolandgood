@@ -33,6 +33,7 @@ public class Quick{
 	for (int p = start; p <= end; p++){
 	    //System.out.print(data[p]);
 	}
+	//System.out.println(data[j]);
 	return j;
     }
     public static void swap(int[] a, int b, int c){
@@ -45,9 +46,9 @@ public class Quick{
     public static int quickselect (int[] data, int k){
 	int pivot = 0, start = 0, end = data.length-1;
 	while (pivot != k){
+		pivot = part(data, start, end);
 	    if (pivot > k){end = pivot-1;}
 	    if (pivot < k){start = pivot+1;}
-	    pivot = part(data, start, end);
 	}
 	return data[k];
     }
@@ -58,29 +59,29 @@ public class Quick{
 	if (start < end){
 	    int pivot = part(data, start, end);
 	    int length = 0;
-	    for (int i = pivot; i <= end; i++){
+	    for (int i = pivot; i >= start; i--){
 		if (data[i] == data[pivot]){length++;}
 		else{break;}
 	    }
 	    //System.out.println("pivot"+pivot);
-	    qsh(data, start, pivot);
-	    qsh(data, pivot+length, end);
+	    qsh(data, start, pivot-length);
+	    qsh(data, pivot, end);
 	}
     }
     public static void main (String[] args){
 	//test();
     }
     public static void test (){
-	int lengtha = 100000;
+	int lengtha = 10000;
 	int range = 2;
 	Random rn = new Random();
 	int[] a = new int[lengtha];
 	for (int i = 0; i < lengtha; i++){
 	    a[i] = rn.nextInt(range);
 	}
-	/*for (int i = 0; i < lengtha; i++){
+	for (int i = 0; i < lengtha; i++){
 	    System.out.print(a[i]+" ");
-	    }*/
+	    }
 	quicksort(a);
 	for (int i = 0; i < lengtha; i++){
 	    System.out.print(a[i]+" ");
