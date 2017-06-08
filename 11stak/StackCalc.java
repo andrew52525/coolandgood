@@ -1,46 +1,26 @@
 import java.util.*;
+
 public class StackCalc{
-    
-    public static double StackCalc(String s){
-	String[] str = s.split(" ");
-	Stack st = new Stack();
-        for(int i = 0; i < str.length; i++){
-	    if(!(str[i].equals("+") || str[i].equals("*") || str[i].equals("/") || str[i].equals("-") || str[i].equals("%"))){
-		Double x = new Double(Double.parseDouble(str[i]));
-		st.push(x);
-	    }
-	    else{
-		Double b = (Double)st.pop();
-		Double a = (Double)st.pop();
-		st.push(operate(a, b, str[i]));
-	    }
+    public static double eval(String s){
+		String[] a = s.split(" ");
+		Stack<Double> nums = new Stack<Double>();
+		for (int i = 0; i < a.length; i++){
+			if(isOp(a[i])){nums.push(operate(a[i], nums.pop(), nums.pop()));}
+			else{nums.push(Double.parseDouble(a[i]));}
+		}
+		return nums.pop();
 	}
-	return ((Double)st.pop()).doubleValue();
-    }
 
-    public static double operate(Double c, Double d, String op){
-	double a = c.doubleValue();
-	double b = d.doubleValue();
-	if(op.equals("*")){
-	    return a * b;
-	}
-	if(op.equals("/")){
-	    return a / b;
-	}
-	if(op.equals("%")){
-	    return a % b;
-	}
-	if(op.equals("+")){
-	    return a + b;
-	}
-	if(op.equals("-")){
-	    return a - b;
-	}
-	return 0.0;
-    }
 
-    /*public static void main(String[] a){
-	String s = "16 8 % 11 +";
-	System.out.println(StackCalc(s));
-    }*/
+    public static double operate(String op, Double a, Double b){
+		if(op.equals("+")){return a + b;}
+		if(op.equals("*")){return a * b;}
+		if(op.equals("-")){return b - a;}
+		if(op.equals("/")){return b / a;}
+		if(op.equals("%")){return b % a;}	
+		return 0.0;
+    }
+	private static boolean isOp(String op){
+		return (op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/") || op.equals("%"));
+    }
 }
