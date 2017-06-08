@@ -1,14 +1,15 @@
 import java.util.Random;
 public class Merge{
-    public static void main (String[] args){
-	/*int[] a = new int[10];
+    /*public static void main (String[] args){
+	int[] a = new int[10];
 	int[] b = new int[10];
 	int[] d = new int[20];
 	Random rn = new Random();
 	for (int i = 0; i < a.length; i++){
-	    a[i] = rn.nextInt(8);
-	    b[i] = rn.nextInt(9);
+	    a[i] = rn.nextInt(200);
+	    b[i] = rn.nextInt(2000);
 	}
+		mergesort(a); mergesort(b);
 	for (int i = 0; i < a.length; i++){
 	    System.out.print(a[i] + " ");
 	}
@@ -21,11 +22,11 @@ public class Merge{
 	for (int i = 0; i < d.length; i++){
 	    System.out.print(d[i]);
 	}
-	mergesort(a);
 	for (int i = 0; i < a.length; i++){
 	    System.out.print(a[i]);
-	}*/
+	}
     }
+	*/
     public static int[] mergesort(int[] a){
 	if (a.length == 1){
 	    return a;
